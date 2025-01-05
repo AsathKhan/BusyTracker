@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calendar</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'calendar_app/css/calendar.css' %}">
 </head>
 <body>
-    
+    <h1>Calendar for {{ month }}/{{ year }}</h1>
+
+    <table>
+        <tr>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+            <th>Su</th>
+        </tr>
+        {% for week in month_calendar %}
+        <tr>
+            {% for day in week %}
+            <td>
+                {% if day == 0 %}
+                <!-- Empty cell -->
+                &nbsp;
+                {% else %}
+                <a href="{% url 'reminder_by_date' year=year month=month day=day %}">{{ day }}</a>
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>    
+
+    <h2>Reminders</h2>
+    <ul>
+        {% for reminder in reminders %}
+        <li>{{ reminder.date }}: {{ reminder.description }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_reminder_url' %}">Add Reminder</a>
 </body>
 </html>

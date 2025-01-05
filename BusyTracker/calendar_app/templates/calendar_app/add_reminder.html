@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Reminder</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'calendar_app/css/add_reminder.css' %}">
+</head>
+<body>
+    <h1>Add Reminder</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" name="date" required><br>
+        <label for="time">Time:</label>
+        <input type="time" name="time"><br>
+        <label for="description">Description:</label><br>
+        <textarea name="description" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Add Reminder</button>
+    </form>
+</body>
+</html>
