@@ -1,63 +1,121 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 20px;
+    padding: 0;
     background-color: #f4f9f9;
     color: #333;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+    color: green;
     font-size: 2em;
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #118ab2;
+    font-size: 1.5em;
+    margin: 30px 0 10px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.navigation a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3a86ff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navigation a:hover {
+    background-color: #118ab2;
+    transition: background-color 0.3s;
+}
+
+
+/* Calendar Table */
 table {
-    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
     border-collapse: collapse;
-    width: 70%;
-    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    width: 14.2%;
+    height: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1em;
 }
 
 th {
     background-color: #3a86ff;
     color: white;
-    padding: 10px;
-    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 0;
 }
 
 td {
-    text-align: center;
-    padding: 15px;
-    border: 1px solid #ddd;
-    font-size: 1.2em;
+    background-color: #f9f9f9;
+    position: relative;
 }
 
-td:hover {
-    background-color: #ffbe0b;
-    color: #fff;
+td a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+td a:hover {
+    color: #118ab2;
+}
+
+/* Highlight Reminder Days */
+.reminder-day {
+    background-color: #ffe6e6; /* Light red */
+    border: 2px solid #ff4d4d; /* Red border */
+    font-weight: bold;
+}
+
+.reminder-day a {
+    color: #ff0000; /* Bright red text */
+}
+
+.reminder-day:hover {
+    background-color: #ffcccc; /* Darker red on hover */
     transition: background-color 0.3s;
 }
 
-td:empty {
-    background-color: #f4f9f9;
-}
-
+/* Reminders Section */
 ul {
-    margin: 20px auto;
-    width: 70%;
-    padding: 0;
     list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 ul li {
-    background-color: #ff006e;
+    background-color: #3a86ff;
     color: white;
     padding: 10px;
-    margin: 5px 0;
-    border-radius: 4px;
-    font-size: 1.1em;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    text-align: left;
 }
 
 ul li:hover {
@@ -65,28 +123,40 @@ ul li:hover {
     transition: background-color 0.3s;
 }
 
-a {
-    display: block;
-    width: 150px;
-    margin: 20px auto;
-    text-align: center;
-    padding: 10px 0;
-    background-color: #06d6a0;
+/* Add Reminder Link */
+a[href$="add/"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff006e;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
-a:hover {
+a[href$="add/"]:hover {
     background-color: #118ab2;
-    transition: background-color 0.3s;
 }
 
-h2 {
-    text-align: center;
-    color: #333;
-    font-size: 1.8em;
-    margin-top: 30px;
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    th, td {
+        height: 50px;
+        font-size: 0.9em;
+    }
+
+    ul li {
+        font-size: 0.9em;
+    }
+
+    a[href$="add/"] {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
 }

@@ -7,8 +7,15 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'calendar_app/css/calendar.css' %}">
 </head>
+
 <body>
     <h1>Calendar for {{ month }}/{{ year }}</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="navigation">
+        <a href="{% url 'calendar_view' year=prev_year month=prev_month %}">&lt; Previous</a>
+        <a href="{% url 'calendar_view' year=next_year month=next_month %}">Next &gt;</a>
+    </div>
 
     <table>
         <tr>
@@ -23,9 +30,8 @@
         {% for week in month_calendar %}
         <tr>
             {% for day in week %}
-            <td>
+            <td class="{% if day in reminder_dates %}reminder-day{% endif %}">
                 {% if day == 0 %}
-                <!-- Empty cell -->
                 &nbsp;
                 {% else %}
                 <a href="{% url 'reminder_by_date' year=year month=month day=day %}">{{ day }}</a>
@@ -34,14 +40,11 @@
             {% endfor %}
         </tr>
         {% endfor %}
-    </table>    
+    </table>
 
     <h2>Reminders</h2>
-    <ul>
-        {% for reminder in reminders %}
-        <li>{{ reminder.date }}: {{ reminder.description }}</li>
-        {% endfor %}
-    </ul>
+
     <a href="{% url 'add_reminder_url' %}">Add Reminder</a>
+    
 </body>
 </html>

@@ -7,4 +7,4 @@ class Reminder(models.Model):
     description = models.TextField()
     
     def __str__(self):
-        return f"{self.date} - {self.description}"
+        return f"reminder for {self.date}"
